@@ -1,0 +1,226 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+body {
+  background: center / cover no-repeat
+    linear-gradient(43deg, rgba(65, 94, 208, 1) 22%, rgba(255, 112, 144, 1) 97%);
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, "Liberation Sans", "FreeSans", sans-serif;
+}
+.footer {
+  flex-shrink: 0;
+  color: white;
+  background-color: #2b2a2a;
+  width: 100%;
+}
+.Logo {
+  position: relative;
+  bottom: 50px;
+}
+.contenu {
+  flex: 1 0 auto;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 130px;
+  margin-top: 8px;
+}
+.F_search {
+  position: relative;
+  right: 20px;
+}
+.D_search {
+  position: relative;
+  bottom: 10px;
+  width: 330px;
+  border-radius: 6px;
+  border: 2px solid white;
+  padding: 7px;
+}
+.input_search {
+  position: relative;
+  right: 20px;
+}
+.input_search > input {
+  height: 40px;
+  font-size: 40px;
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 290px;
+}
+.D_button_search {
+  position: relative;
+  right: 25px;
+  background: none;
+}
+.D_button_search > button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+}
+.search {
+  outline: none;
+}
+.Block_Menu {
+  display: flex;
+}
+.badge {
+  text-decoration: none;
+  border-radius: 100%;
+  padding: 2px 9px;
+  font-size: 0.7em;
+  background: linear-gradient(
+    43deg,
+    rgba(246, 103, 2, 1) 22%,
+    rgba(215, 223, 4, 0.7341011133086816) 97%
+  );
+  position: absolute;
+  top: 23px;
+  right: 161px;
+  width: fit-content;
+}
+.a_magnifying {
+  width: 40px;
+  display: flex;
+}
+.a_magnifying:hover {
+  border: none;
+}
+.magnifying {
+  width: 100%;
+}
+.a_basket {
+  width: 40px;
+}
+.basket {
+  width: 100%;
+}
+nav > ul {
+  height: fit-content;
+  float: right;
+  list-style-type: none;
+  display: flex;
+  font-size: 30px;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+nav > ul > li > a {
+  color: white;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+.name1 {
+  color: white;
+  cursor: pointer;
+  width: 100px;
+}
+.name1:hover > .elements {
+  /*display: block;*/
+  visibility: visible;
+  max-height: 100%;
+  padding: 10px 0px;
+}
+.elements {
+  position: relative;
+  margin-top: 8px;
+  margin-left: 40px;
+  background-color: white;
+  visibility: hidden;
+  z-index: 1;
+  top: 1px;
+  padding: 0px;
+  right: 131px;
+  width: fit-content;
+  box-shadow: 0px 0px 10px black;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.under1 a {
+  text-decoration: none;
+}
+nav li {
+  margin: 0px 20px;
+  list-style-type: none;
+}
+.menu:hover {
+  margin-top: 20px;
+  border-bottom: 2px solid white;
+  border-radius: 6px;
+}
+.up_button {
+  background-color: #7d7a7a;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+  color: white;
+}
+.block1 a {
+  margin: 0px 25px;
+}
+
+.ligne {
+  position: relative;
+  bottom: 25px;
+  background-color: white;
+  color: white;
+  z-index: 0;
+}
+.menu_toggle {
+  display: none;
+}
+/* responsive Menu (taille d'ecrant)*/
+@media screen and (max-width: 1250px) {
+  .menu_toggle {
+    display: block;
+    width: 35px;
+    margin-right: 20px;
+  }
+  .menu_toggle:checked .Block_Menu {
+    display: block;
+    float: right;
+  }
+  .Block_Menu {
+    display: none;
+  }
+  .Block_Menu.responsive {
+    border: 1px solid;
+    display: block;
+    position: absolute;
+    top: 123px;
+    float: left;
+    width: 100%;
+    background-color: #2b2a2a;
+  }
+}
+/* scroll top 
+ #scroll_to_top {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  bottom: 50px;
+  right: 50px;
+  display: none;
+  background-color: #9ea1a1;
+  cursor: pointer;
+  z-index: 40;
+  border-radius: 50%;
+}
+#scroll_to_top img {
+  width: auto;
+} */

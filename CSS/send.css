@@ -1,0 +1,27 @@
+.contenu {
+  border: 1px;
+}
+.form_vente {
+  border: solid 1px;
+  padding: 30px;
+}
+form > div > div {
+  border: solid 1px;
+  width: fit-content;
+}
+.image-upload > input {
+  display: none;
+}
+.image-upload > label > img{
+  width: 130px;
+  margin: 30px;
+  cursor: pointer;
+}
+.image-upload > label > img.show_img{
+  width: 209px;
+  cursor: pointer;
+  margin: 0;
+}
+.description{
+  resize: none;
+}

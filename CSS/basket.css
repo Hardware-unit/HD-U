@@ -1,0 +1,37 @@
+.basket1 {
+  background-color: white;
+  border-radius: 35px;
+  margin: 10px 30px 30px 30px;
+  padding: 20px;
+}
+.product_add{
+    display: flex;
+}
+.info_prd{
+    margin-top: 10px;
+}
+.Title_product{
+    font-size:22px;
+}
+.P_I{
+    font-size: 18px;
+    margin: 7px 0px;
+}
+.total_price {
+  display: flex;
+  justify-content: flex-end;
+}
+.info_noArticle{
+    text-align: center;
+}
+.no_Article{
+    margin-top: 30px;
+    font-size: 19px;
+}
+.info_noConnect{
+    text-align: center;
+}
+.no_connect{
+    margin-top: 30px;
+    font-size: 19px;
+}

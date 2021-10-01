@@ -1,0 +1,82 @@
+.block1 {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-around;
+  font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.articles {
+  /*rempli la case avec les données*/
+  width: fit-content;
+  margin: 65px auto;
+}
+
+.block_image {
+  width: 500px;
+  background: rgb(246, 103, 2);
+  background: linear-gradient(
+    43deg,
+    rgba(246, 103, 2, 1) 22%,
+    rgba(215, 223, 4, 0.7341011133086816) 97%
+  );
+  box-shadow: 15px 9px 20px rgb(85, 26, 139);
+  border-radius: 20px;
+}
+.block_seller {
+  width: 500px;
+  background: linear-gradient(
+    43deg,
+    rgba(215, 223, 4, 0.7341011133086816) 22%,
+    rgba(246, 103, 2, 1) 97%
+  );
+  box-shadow: 15px 9px 20px rgb(85, 26, 139);
+  border-radius: 20px;
+  height: 494px;
+}
+
+.image {
+  margin-top: 20px;
+  margin-bottom: 17px;
+  border-radius: 20px;
+  width: 453px; /* sois enlever soit remetre*/
+  height: 453px;
+}
+.block_info {
+  padding: 10px 0px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 15px 9px 20px rgb(85, 26, 139);
+  margin-top: 10px;
+}
+.block1 a {
+  text-decoration: none;
+  color: black;
+}
+.block1 a:active {
+  color: black;
+}
+.numberArticle {
+  position: absolute;
+  top: 121px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.infoArticle {
+  text-align: left;
+  font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+}
+.infoArticles {
+  text-align: left;
+  font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+  padding-left: 20px;
+  width: fit-content;
+}
+.tri {
+  position: absolute;
+  right: 29px;
+  top: 8px;
+}

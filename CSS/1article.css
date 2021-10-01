@@ -1,0 +1,30 @@
+.bloc1 {
+
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0px 30px;
+  min-width: 720px;
+  box-shadow: 15px 9px 20px rgb(85, 26, 139);
+  margin-bottom: 40px;
+}
+.articles {
+  display: flex;
+  max-width: 1260px;
+  margin: auto;
+  justify-content: space-around;
+}
+.bloc_q {
+    border: 1px solid;
+    border-radius: 15px ;
+    height: fit-content;
+    padding: 0px 15px 15px 15px;
+}
+.description {
+  max-width: 1260px;
+  margin: auto;
+}
+.ligne_prod {
+  max-width: 1260px;
+  margin: auto;
+}

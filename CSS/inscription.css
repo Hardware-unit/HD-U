@@ -1,0 +1,128 @@
+.back {
+  background: center / cover no-repeat
+    linear-gradient(43deg, rgba(65, 94, 208, 1) 22%, rgba(255, 112, 144, 1) 97%);
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+}
+.register {
+  border: solid 1px gray;
+  width: 500px;
+  margin: 30px auto;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  border-radius: 7px;
+  text-align: center;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.5);
+  background: rgb(246, 103, 2);
+  background: linear-gradient(
+    61deg,
+    rgb(248 141 65) 22%,
+    rgba(215, 223, 4, 0.7341011133086816) 97%
+  );
+  /*background: linear-gradient( 
+43deg
+, rgba(246, 103, 2, 1) 22%, rgba(215, 223, 4, 0.7341011133086816) 97% );*/
+}
+div > h1 {
+  float: left;
+  font-size: 35px;
+  position: relative;
+  left: 14px;
+  color: white;
+}
+.cross {
+  width: 30px;
+}
+.cross1 {
+  position: relative;
+  top: 14px;
+  left: 136px;
+}
+form > div > input {
+  outline: none; /* enlever le hover des input*/
+  width: 446px;
+  padding: 8px 8px;
+  border: solid 1px gray;
+  border-radius: 7px;
+  margin: 5px 15px 5px 15px;
+}
+.firstname {
+  margin: 10px 4px 7px 15px;
+  width: 210px;
+}
+.lastname {
+  margin: 10px 15px 7px 4px;
+  width: 210px;
+}
+.Birth span {
+  color: white;
+}
+.Birth {
+  text-align: left;
+  margin: -4px 15px 0px 15px;
+}
+div table select {
+  outline: none; /* enlever le hover des input*/
+  width: 152px;
+  padding: 8px 8px;
+  border: solid 1px gray;
+  border-radius: 7px;
+  margin-bottom: 4px;
+}
+.H_F {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 16px;
+}
+
+.H_F > div {
+  border: solid 1px gray;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.Genre {
+  color: white;
+  position: relative;
+  right: 215px;
+}
+.genre {
+  padding: 8px 8px;
+  border: solid 1px gray;
+  border-radius: 7px;
+  margin-bottom: 4px;
+  width: 133px;
+}
+.genre input {
+  width: 10px;
+}
+.genre,
+.genre * {
+  cursor: pointer;
+  background-color: white;
+}
+.genre label {
+  position: relative;
+  bottom: 3px;
+}
+hr {
+  width: 460px;
+}
+.listing {
+  width: 467px;
+  margin: 10px 9px;
+}
+.listing,
+.listing * {
+  cursor: pointer;
+}
+.Error-Message {
+  color: red;
+  opacity: 0;
+  user-select: none;
+  font-size: 11px;
+}
