@@ -1,5 +1,6 @@
 <?php
 require_once("../db.php");
+require_once("../reCaptcha/autoload.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,11 +10,22 @@ require_once("../db.php");
     <meta charset="utf8" />
     <link rel="stylesheet" href="../CSS/inscription.css?v=<?= ver() ?>">
     <link rel="icon" type="image/png" href="../Image/HeadLogo.png">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
 <body class="back" onload="init();">
     <?php
+    
+    $recaptcha = new \ReCaptcha\ReCaptcha('6Lf6ZawcAAAAAFKnjmTxFezTSjaX9-VBZ79RKs_y');
+    $resp = $recaptcha->setExpectedHostname('recaptcha-demo.appspot.com')
+        ->verify($_POST['g-recaptcha-response']);
+    if ($resp->isSuccess()) {
+        // Verified!
+    } else {
+        $errors = $resp->getErrorCodes();
+    }
+
     if (count($_POST) > 0) {
         $lenom = $_POST["nom"];
         $leprenom = $_POST["prenom"];
@@ -25,18 +37,18 @@ require_once("../db.php");
         $lesexe = isset($_POST['hf']) ? $_POST['hf'] : NULL;
         $letel = $_POST["tel"];
         $lepass = password_hash($lepass, PASSWORD_DEFAULT);
-        
+
         $sql2 = "SELECT count(*) FROM utilisateur WHERE Email = '$email' or tel = '$letel' ";
 
         $result = mysqli_query($conn, $sql2);
         $row = mysqli_fetch_array($result);
 
         if ($row[0] > 0) { // le premier element du tableau qui sont deja existant 
-            echo "information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?";
+            echo "<script>alert(\"information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?\")</script>";
         } else {
             $sql = "INSERT INTO utilisateur VALUES (NULL, '$lenom', '$leprenom', '$email', '$lepass', '$leannee-$lemois-$lejour',0,'$letel' ,'$lesexe',0)";
             mysqli_query($conn, $sql);
-            $_SESSION["email_verif"] = $email; 
+            $_SESSION["email_verif"] = $email;
             header("location:../inscription_verif.php");
         }
     }
@@ -108,10 +120,15 @@ require_once("../db.php");
                     <label for="sexe3">Personnalisé : </label><input type="radio" name="hf" id="sexe3" value="3" oninput="check_sex();" />
                 </div>
             </div>
+            <div class="g-recaptcha" data-sitekey="6Lf6ZawcAAAAAAWS-IUyjj5MLjOJIu_onfS7JKGN"></div>
+            <br />
             <hr>
             <div class="listing">
                 <input type="submit" value="S'inscrire" class="listing">
             </div>
+
+
+
         </form>
     </div>
     <script type="text/javascript" src="../js/inscription.js?v=<?= ver() ?>"></script>
