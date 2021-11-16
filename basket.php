@@ -25,12 +25,12 @@ require_once("info_panier.php");
         if (isset($USER_INFO)) {
             if (count($_GET) > 0) {
                 $quantite = $_GET["qte"];
-                $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO['ID'] . ")";
+                $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO->getID() . ")";
                 $result = mysqli_query($conn, $sql);
                 header("Location: basket.php"); // si on ajoute on rechage si produit ajouté
                 exit();
             }
-            $sql2 = "SELECT ROUND(pa.Qte * p.prix, 2) AS prix_produit, pa.Qte, p.* FROM `panier` AS pa JOIN `produits` AS p ON pa.ID_article = p.ID WHERE pa.ID_user = " . $USER_INFO['ID'];
+            $sql2 = "SELECT ROUND(pa.Qte * p.prix, 2) AS prix_produit, pa.Qte, p.* FROM `panier` AS pa JOIN `produits` AS p ON pa.ID_article = p.ID WHERE pa.ID_user = " . $USER_INFO->getID();
             $result2 = mysqli_query($conn, $sql2);
             $c = mysqli_num_rows($result2); // compter le nombre d'articles
             if ($result2 != Null && mysqli_num_rows($result2) > 0) {
@@ -39,7 +39,7 @@ require_once("info_panier.php");
                 <div class="basket1">
                     <h1 class="your_product">Votre panier</h1>
                     <div>
-                        <a href="delete_all_Product.php?id=<?= $USER_INFO["ID"] ?>">Supprimer tous les éléments</a>
+                        <a href="delete_all_Product.php?id=<?= $USER_INFO->getID() ?>">Supprimer tous les éléments</a>
                     </div><br>
                     <hr>
                     <?php

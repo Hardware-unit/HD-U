@@ -15,8 +15,9 @@ require_once("../reCaptcha/autoload.php");
 </head>
 
 <body class="back" onload="init();">
+    <div><? $err_meg ?></div>
     <?php
-    
+/*
     $recaptcha = new \ReCaptcha\ReCaptcha('6Lf6ZawcAAAAAFKnjmTxFezTSjaX9-VBZ79RKs_y');
     $resp = $recaptcha->setExpectedHostname('recaptcha-demo.appspot.com')
         ->verify($_POST['g-recaptcha-response']);
@@ -26,7 +27,63 @@ require_once("../reCaptcha/autoload.php");
         $errors = $resp->getErrorCodes();
     }
 
-    if (count($_POST) > 0) {
+
+    if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+        $secret = '6Lf6ZawcAAAAAFKnjmTxFezTSjaX9-VBZ79RKs_y';
+        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+        $responseData = json_decode($verifyResponse);
+        if ($responseData->success) {
+            $succMsg = 'Votre demande de contact a été envoyée avec succès.';
+        } else {
+            $errMsg = 'La vérification du robot a échoué, veuillez réessayer.';
+        }
+    }
+
+    if (isset($_POST['recaptcha-response']) &&
+        isset($_POST['nom']) &&
+        isset($_POST['prenom']) &&
+        isset($_POST['prenom']) &&
+        isset($_POST['email']) &&
+        isset($_POST['pwd1']) &&
+        isset($_POST['day'])&&
+        isset($_POST['month']) &&
+        isset($_POST['year']) &&
+        isset($_POST['hf']) &&
+        isset($_POST['tel'])) { //
+
+        $lenom = $_POST["nom"];
+        $leprenom = $_POST["prenom"];
+        $email = $_POST["email"];
+        $lepass = $_POST["pwd1"];
+        $lejour = $_POST["day"];
+        $lemois = $_POST["month"];
+        $leannee = $_POST["year"];
+        $lesexe = isset($_POST['hf']) ? $_POST['hf'] : NULL;
+        $letel = $_POST["tel"];
+        $lepass = password_hash($lepass, PASSWORD_DEFAULT);
+
+        $sql2 = "SELECT count(*) FROM utilisateur WHERE Email = '$email' or tel = '$letel' ";
+
+        $result = mysqli_query($conn, $sql2);
+        $row = mysqli_fetch_array($result);
+
+        if ($row[0] > 0) { // le premier element du tableau qui sont deja existant 
+            echo "<script>alert(\"information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?\")</script>";
+        } else {
+            $sql = "INSERT INTO utilisateur VALUES (NULL, '$lenom', '$leprenom', '$email', '$lepass', '$leannee-$lemois-$lejour',0,'$letel' ,'$lesexe',0)";
+            mysqli_query($conn, $sql);
+            $_SESSION["email_verif"] = $email;
+            header("location:../inscription_verif.php");
+        }
+    }
+    else
+    {
+        $err_meg = "Tous les chants doivent être remplis.";
+    }*/
+
+    
+
+    if (count($_POST) > 0) { //
         $lenom = $_POST["nom"];
         $leprenom = $_POST["prenom"];
         $email = $_POST["email"];
@@ -120,8 +177,10 @@ require_once("../reCaptcha/autoload.php");
                     <label for="sexe3">Personnalisé : </label><input type="radio" name="hf" id="sexe3" value="3" oninput="check_sex();" />
                 </div>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lf6ZawcAAAAAAWS-IUyjj5MLjOJIu_onfS7JKGN"></div>
+
+            <div class="g-recaptcha" data-sitekey="6Lf6ZawcAAAAAAWS-IUyjj5MLjOJIu_onfS7JKGN" name="recaptcha-response"></div>
             <br />
+
             <hr>
             <div class="listing">
                 <input type="submit" value="S'inscrire" class="listing">

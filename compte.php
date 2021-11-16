@@ -39,7 +39,7 @@ require_once("info_panier.php");
             if ($row[0] > 0) {
                 echo "information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?";
             } else {
-                $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO['ID'];
+                $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO->getID();
                 $res = mysqli_query($conn, $sql1);
                 header("location:index.php");
             }
@@ -50,7 +50,7 @@ require_once("info_panier.php");
             $result3 = mysqli_query($conn, $sql3);
             $row2 = mysqli_fetch_array($result2);
             $row3 = mysqli_fetch_array($result3);
-               if ($mail != $USER_INFO["Email"] || $tel != $USER_INFO["tel"]) {
+               if ($mail != $USER_INFO->getEmail() || $tel != $USER_INFO->getTel()) {
                 if ($row2[0] > 0 && $row3[0] > 0) {
                     echo "information: Email et numero de téléphone déjà utilisé.";
                 } elseif ($row2[0] > 0) {
@@ -58,12 +58,12 @@ require_once("info_panier.php");
                 } elseif ($row3[0] > 0) {
                     echo "information: tel déjà utilisé.";
                 } else {
-                    $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO['ID'];
+                    $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO->getID();
                     $res = mysqli_query($conn, $sql1);
                     header("location:index.php");
                 } 
             } else {
-                $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO['ID'];
+                $sql1 = "UPDATE `utilisateur` SET `Email` = '$mail',`Date_De_Naissance`= '$ddn',`tel`= '$tel',`sexe`= $sex WHERE `ID` = " . $USER_INFO->getID();
                 $res = mysqli_query($conn, $sql1);
                 header("location:index.php");
             }*/ //$sql = "UPDATE `utilisateur` SET `MotDePasse` = 'nouveau' WHERE `MotDePasse` = 'ancien'";
@@ -72,29 +72,29 @@ require_once("info_panier.php");
             <div class="compte">
                 <?php if (isset($USER_INFO)) { ?>
                     <div>
-                        <input type="text" name="Firstname" disabled value="<?= $USER_INFO["Nom"] ?>">
+                        <input type="text" name="Firstname" disabled value="<?= $USER_INFO->getNom() ?>">
                     </div>
                     <div>
-                        <input type="text" name="Lastname" disabled value="<?= $USER_INFO["Prenom"] ?>">
+                        <input type="text" name="Lastname" disabled value="<?= $USER_INFO->getPrenom() ?>">
                     </div>
                     <div>
-                        <input type="text" name="mail" value="<?= $USER_INFO["Email"] ?>">
+                        <input type="text" name="mail" value="<?= $USER_INFO->getEmail() ?>">
                     </div>
                     <div>
-                        <input type="text" name="phone" value="<?= $USER_INFO["tel"] ?>">
+                        <input type="text" name="phone" value="<?= $USER_INFO->getTel() ?>">
                     </div>
                     <div>
-                        <input type="date" name="birth" value="<?= $USER_INFO["Date_De_Naissance"] ?>">
+                        <input type="date" name="birth" value="<?= $USER_INFO->getDate_De_Naissance() ?>">
                     </div>
                     <div>
                         <select name="genre" id="gr">
-                            <option value="1" <?php if ($USER_INFO["sexe"] == 1) {
+                            <option value="1" <?php if ($USER_INFO->getSexe() == 1) {
                                                     echo "selected";
                                                 } ?>>Homme</option>
-                            <option value="2" <?php if ($USER_INFO["sexe"] == 2) {
+                            <option value="2" <?php if ($USER_INFO->getsSexe() == 2) {
                                                     echo "selected";
                                                 } ?>>Femme</option>
-                            <option value="3" <?php if ($USER_INFO["sexe"] == 3) {
+                            <option value="3" <?php if ($USER_INFO->getSexe() == 3) {
                                                     echo "selected";
                                                 } ?>>Personnalisé</option>
                         </select>

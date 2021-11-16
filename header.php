@@ -35,11 +35,11 @@
                 <?php
                 if (isset($USER_INFO)) {
                 ?>
-                    <li class="name1"><?= $USER_INFO["Nom"] ?>
+                    <li class="name1"><?= $USER_INFO->getNom() ?>
                         <ul class="elements">
                             <li class="under1"><a href="compte.php">Mon compte</a></li>
                             <?php
-                            if ($USER_INFO["Droit"] == 1) { ?>
+                            if ($USER_INFO->getDroit() == 1) { ?>
                                 <li class="under1"><a href="login/admin.php">Admin</a></li>
                             <?php
                             }
