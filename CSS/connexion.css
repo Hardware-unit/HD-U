@@ -43,6 +43,11 @@ div > h1 {
   top: 14px;
   left: 136px;
 }
+.cross2{
+  position: relative;
+  top: 8px;
+  left: 13px;
+}
 form > div > input {
   outline: none; /* enlever le hover des input*/
   width: 446px;

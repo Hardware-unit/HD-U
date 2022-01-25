@@ -18,9 +18,9 @@ $mail->SMTPSecure = "tls"; // protocole
 $mail->SMTPAuth = true;
 
 /* Gmail config: */
-$mail->Username = "hardwareunit.fr@gmail.com";
+$mail->Username = "hardwareunit.contact@gmail.com";
 $mail->Host = "smtp.gmail.com";
-$mail->setFrom("hardwareunit.fr@gmail.com", 'HardwareUnit');
+$mail->setFrom("hardwareunit.contact@gmail.com", 'HardwareUnit');
 
 $mail->Password = "Hardwareunit1";
 
