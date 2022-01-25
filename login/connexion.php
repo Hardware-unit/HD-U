@@ -66,7 +66,7 @@ require_once("user_info.php");
             </div>
             <hr>
             <div class="connexion"><input type="submit" value="connexion" onsubmit="">
-                <div><a href="">Mot de passe oublié ?</a></div>
+                <div><a href="../forgotpwd.php">Mot de passe oublié ?</a></div>
             </div>
             <div class="listing"><a href="inscription.php">Pas encore inscrit ? Cliquez ici !</a></div>
         </form>
