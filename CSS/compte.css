@@ -2,3 +2,40 @@
   margin: auto;
   width: fit-content;
 }
+.Profil {
+  width: 420px;
+  margin: auto;
+  margin-bottom: 70px;
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 10px;
+}
+.VotreProfil {
+  text-align: center;
+}
+.modif-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px;
+  color: white;
+  font-size: 20px;
+}
+.InfoPeople {
+  border: 2px solid gray;
+  background: linear-gradient(
+    61deg,
+    rgb(248 141 65) 22%,
+    rgba(215, 223, 4, 0.7341011133086816) 97%
+  );
+  border-radius: 20px;
+}
+.separator {
+  border: 1px solid gray;
+}
+.modif {
+  margin-top: 10px;
+}
+.modif button {
+  width: 88px;
+  height: 31px;
+}

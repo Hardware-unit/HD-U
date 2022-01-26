@@ -34,7 +34,7 @@ require_once("info_panier.php");
             $result2 = mysqli_query($conn, $sql2);
             $c = mysqli_num_rows($result2); // compter le nombre d'articles
             if ($result2 != Null && mysqli_num_rows($result2) > 0) {
-                
+
         ?>
                 <div class="basket1">
                     <h1 class="your_product">Votre panier</h1>
@@ -47,6 +47,7 @@ require_once("info_panier.php");
                     while ($row = mysqli_fetch_array($result2)) {
                         $prix_total += round($row["prix_produit"], 2);
                     ?>
+                        <a href="article.php?id=<?= $row['ID'] ?>">
                             <div class="product_add">
                                 <div>
                                     <div class="img_product">
@@ -86,19 +87,20 @@ require_once("info_panier.php");
                                         <?= $row["prix_produit"] ?> €
                                     </div>
                                     <div>
-                                        <a href="delete.php?id=<?= $row["ID"]?>">supprimer</a>
+                                        <a href="delete.php?id=<?= $row["ID"] ?>">supprimer</a>
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-                        <?php
+                        </a>
+                        <hr>
+                    <?php
                     }
-                        ?>
-                        <div class="total_price">
-                            Prix total (<?= $c ?> articles) :
-                            <?= $prix_total ?>€
-                        </div>
-                         <a href="buy.php"><button>payer</button></a>
+                    ?>
+                    <div class="total_price">
+                        Prix total (<?= $c ?> articles) :
+                        <?= $prix_total ?>€
+                    </div>
+                    <a href="buy.php"><button>payer</button></a>
                 </div>
             <?php
             } else {
