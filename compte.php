@@ -15,7 +15,6 @@ require_once("info_panier.php");
 
 </head>
 
-
 <body>
     <?php
     getUserInfo();
