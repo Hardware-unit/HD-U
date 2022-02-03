@@ -25,10 +25,10 @@ require_once("info_panier.php");
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $get_id = htmlspecialchars($_GET['id']);
             $sql = "SELECT p.*, m.nom AS NomMarque FROM `produits` AS p JOIN `marques` AS m JOIN `chipsets` AS c JOIN `taille_de_memoire` AS tm ON p.marque = m.ID AND p.chipset = c.ID AND p.taille_de_memoire = tm.ID WHERE p.ID = $get_id";
-            $result = mysqli_query($conn, $sql);
+            $result = $conn->query($sql);
             //if ($result) {
             //$sql .= " AND p.dispo = 1";
-            $row = mysqli_fetch_array($result);
+            $row = $result->fetch_array();
             if ($row['dispo'] == 1) {
         ?>
                 <div class="bloc1">

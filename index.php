@@ -23,14 +23,14 @@ require_once("info_panier.php");
     ?>
     <?php
     $sql = "SELECT p.ID,p.*, p.nom as prodnom, p.prix as prodprix, m.nom as marquenom from produits as p join marques as m on p.marque = m.ID WHERE p.dispo = 1 ORDER BY RAND() LIMIT 3";
-    $result = mysqli_query($conn, $sql);
+    $result = $conn->query($sql);
     ?>
 
     <div class="contenu">
         <h1>Top Achats</h1>
         <div class="best_product">
             <?php
-            while ($row = mysqli_fetch_array($result)) {
+            while ($row = $result->fetch_array()) {
             ?>
                 <a href="article.php?id=<?= $row['ID'] ?>">
                     <div class="container">

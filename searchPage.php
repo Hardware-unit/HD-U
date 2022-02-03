@@ -41,8 +41,7 @@ require_once("info_panier.php");
                 $sql .= join(" OR ", $tableauVide);
                 $sql .= ")";
 
-                //$sql .= " ORDER BY " . $_GET["modeTri"];
-                $result = mysqli_query($conn, $sql);
+                $result = $conn->query($sql);
                 $c = mysqli_num_rows($result); // nombre d'info trouver
                 while ($row = mysqli_fetch_array($result)) {
                     if ($row['confirmation'] == 1) {

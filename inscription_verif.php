@@ -6,17 +6,17 @@ require_once("login/common.php");
 
 $STATUS = -1;
 if (isset($_GET["code"])) {// losque l'on viens de cette meme page
-    $code = strtolower(mysqli_escape_string($conn, $_GET["code"]));
+    $code = strtolower($conn->escape_string($_GET["code"]));
     $sql = "SELECT * FROM `verif` WHERE `verif`.`Code` = '$code';";
-    $res = mysqli_query($conn, $sql);
+    $res = $conn->query($sql);
     if ($res != false) {
-        $row = mysqli_fetch_array($res);
+        $row = $res->fetch_array();
         if ($row) {
             $user_id = $row["Users"];
             $update_sql = "UPDATE `utilisateur` SET `utilisateur`.`confirme` = 1 WHERE `utilisateur`.`ID` = $user_id";
             $delete_sql = "DELETE FROM `verif` WHERE `verif`.`Users` = $user_id";
-            $update_res = mysqli_query($conn, $update_sql);
-            $delete_sql = mysqli_query($conn, $delete_sql);
+            $update_res = $conn->query($update_sql);
+            $delete_sql = $conn->query($delete_sql);
             if ($update_res == true) {
                 $STATUS = 1;
             } else {

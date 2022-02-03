@@ -6,6 +6,6 @@
     $sql = "DELETE FROM `panier` WHERE ID_article = " . $_GET["id"] . " AND ID_user = " . $USER_INFO->getID() ;
     echo $sql;
 
-    mysqli_query($conn, $sql);
+    $connm->query($sql);
     header("location:basket.php");
 ?>

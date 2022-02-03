@@ -26,12 +26,12 @@ require_once("info_panier.php");
             if (count($_GET) > 0) {
                 $quantite = $_GET["qte"];
                 $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO->getID() . ")";
-                $result = mysqli_query($conn, $sql);
+                $result = $conn->query($sql);
                 header("Location: basket.php"); // si on ajoute on rechage si produit ajouté
                 exit();
             }
             $sql2 = "SELECT ROUND(pa.Qte * p.prix, 2) AS prix_produit, pa.Qte, p.* FROM `panier` AS pa JOIN `produits` AS p ON pa.ID_article = p.ID WHERE pa.ID_user = " . $USER_INFO->getID();
-            $result2 = mysqli_query($conn, $sql2);
+            $result2 = $conn->query($sql2);
             $c = mysqli_num_rows($result2); // compter le nombre d'articles
             if ($result2 != Null && mysqli_num_rows($result2) > 0) {
 
@@ -44,7 +44,7 @@ require_once("info_panier.php");
                     <hr>
                     <?php
                     $prix_total = 0;
-                    while ($row = mysqli_fetch_array($result2)) {
+                    while ($row = $result2->fetch_array()) {
                         $prix_total += round($row["prix_produit"], 2);
                     ?>
 

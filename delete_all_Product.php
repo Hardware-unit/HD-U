@@ -4,6 +4,6 @@
     $sql = "DELETE FROM `panier` WHERE ID_user = " . $_GET["id"];
     echo $sql;
 
-    mysqli_query($conn, $sql);
+    $conn->query($sql);
     header("location:index.php");
     ?>

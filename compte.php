@@ -31,7 +31,7 @@ require_once("info_panier.php");
         $lesexe = isset($_POST['genre']) ? $_POST['genre'] : NULL;
         $letel = $_POST["tel"];
         $update_sql = "UPDATE `utilisateur` SET `Nom`= '$lenom' ,`Prenom`= '$leprenom' ,`Date_De_Naissance`= '$lejour' ,`tel`= '$letel' ,`sexe`= '$lesexe' WHERE `ID` = '". $USER_INFO->getID()."'";
-        $update_res = mysqli_query($conn, $update_sql);
+        $update_res = $conn->query($update_sql);
         if ($update_res == true) {
             header('Location: compte.php');
         }

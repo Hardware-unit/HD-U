@@ -36,7 +36,7 @@ require_once("info_panier.php");
 
             $sql = "INSERT into produits values (NULL, NULL, $leprix, '$lenom', '$descrip', $marque,0,$chipset,$memory,'" . $USER_INFO->getNom() . "',0)";
 
-            $result = mysqli_query($conn, $sql);
+            $result = $conn->query($sql);
 
             $tmp_name = $_FILES["file-input"]["tmp_name"];
             $newname = $conn->insert_id . "_1";

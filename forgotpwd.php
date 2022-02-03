@@ -20,10 +20,10 @@ require_once("login/common.php");
     $STATUS = 1;
     if (count($_POST) > 0) {
         $emailTel = $_POST["email"];
-        $emailTel = mysqli_real_escape_string($conn, $emailTel); // eviter injection sql
+        $emailTel = $conn->real_escape_string($emailTel); // eviter injection sql
         $sql = "SELECT ID, confirme, Email, Nom, Prenom FROM utilisateur WHERE Email =  '$emailTel' or tel ='$emailTel' ";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
+        $result = $conn->query($sql);
+        $row = $result->fetch_array();
         if ($row[0] > 0) {
             if ($row["confirme"]) {
                 $code_unique = false;

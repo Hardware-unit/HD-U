@@ -34,7 +34,7 @@ require_once("info_panier.php");
 
 
         $sql = "INSERT INTO `info_facture` value (NULL,'$liv_adress','$fac_adress','$ville',$CP," . $PANIER_INFO['ID_user'] . ",'$date',$CB)";
-        $result = mysqli_query($conn, $sql);
+        $result = $conn->query($sql);
         header("location:facture.php");
     }
     ?>
