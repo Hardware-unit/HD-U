@@ -21,11 +21,61 @@ require_once "info_panier.php";
     getPanierInfo();
     if ($USER_INFO->getID() >= 1) {
         require_once("header.php");
-        
+        $sql = "SELECT * ,s.nom AS genre FROM `utilisateur` AS u JOIN sexe AS s on u.sexe = s.ID_sex where `confirme` = 1";
+        $result = $conn->query($sql);
     ?>
         <div class="contenu">
+            <?php
+            $c = mysqli_num_rows($result);
+            while ($BLOC = $result->fetch_array()) {
+            ?>
+                <table>
+                    <tr>
+                        <td><?=
+                            $BLOC['ID']
+                            ?></td>
+                        <td><?=
+                            $BLOC['Nom']
+                            ?></td>
+                        <td><?=
+                            $BLOC['Prenom']
+                            ?></td>
+                        <td><?=
+                            $BLOC['Email']
+                            ?></td>
+                        <td><?=
+                            $BLOC['Date_De_Naissance']
+                            ?></td>
+                        <td><?=
+                            $BLOC['Droit']
+                            ?></td>
+                        <td><?=
+                            $BLOC['tel']
+                            ?></td>
+                        <td><?=
+                            $BLOC['genre']
+                            ?></td>
+                    </tr>
+                    <?php if($BLOC['Droit']==0){
+                        ?>
+                    <td><button></button></td>
+                    </tr>
+                    <td><?=
+                        $BLOC['genre']
+                        ?></td>
+                        <?php } ?>
+                    </tr>
+                </table>
+                <div></div>
 
 
+            <?php
+            }
+
+            ?>
+            <?=
+            $c
+            ?>
         </div>
     <?php
         require_once("footer.php");
@@ -37,6 +87,8 @@ require_once "info_panier.php";
     <?php
     }
     ?>
+    <script type="text/javascript" src="js/admin.js"></script>
 </body>
+
 
 </html>

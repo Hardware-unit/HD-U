@@ -32,8 +32,8 @@ require_once("../reCaptcha/autoload.php");
 
         $sql2 = "SELECT count(*) FROM utilisateur WHERE Email = '$email' or tel = '$letel' ";
 
-        $result = mysqli_query($conn, $sql2);
-        $row = mysqli_fetch_array($result);
+        $result = $conn->query($sql2);
+        $row = $result->fetch_array();
 
         $secretKey = "6LftrzUeAAAAAKCXJNwFN-eQ85W-qK8wd9gJn1aA";
         // post request to server
@@ -48,7 +48,7 @@ require_once("../reCaptcha/autoload.php");
                 echo "<script>alert(\"information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?\")</script>";
             } else {
                 $sql = "INSERT INTO utilisateur VALUES (NULL, '$lenom', '$leprenom', '$email', '$lepass', '$leannee-$lemois-$lejour',0,'$letel' ,'$lesexe',0)";
-                mysqli_query($conn, $sql);
+                $conn->query($sql);
                 $_SESSION["email_verif"] = $email;
                 header("location:../inscription_verif.php");
             }
