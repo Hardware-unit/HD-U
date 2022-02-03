@@ -40,7 +40,7 @@
                             <li class="under1"><a href="compte.php">Mon compte</a></li>
                             <?php
                             if ($USER_INFO->getDroit() == 1) { ?>
-                                <li class="under1"><a href="login/admin.php">Admin</a></li>
+                                <li class="under1"><a href="admin/nos_utilisateur.php">Admin</a></li>
                             <?php
                             }
                             ?>
