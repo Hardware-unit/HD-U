@@ -34,7 +34,7 @@ require_once("info_panier.php");
             $descrip = $_POST["description"];
 
 
-            $sql = "INSERT into produits values (NULL, NULL, $leprix, '$lenom', '$descrip', $marque,0,$chipset,$memory,'" . $USER_INFO->Nom() . "',0)";
+            $sql = "INSERT into produits values (NULL, NULL, $leprix, '$lenom', '$descrip', $marque,0,$chipset,$memory,'" . $USER_INFO->getNom() . "',0)";
 
             $result = mysqli_query($conn, $sql);
 

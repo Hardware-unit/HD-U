@@ -35,6 +35,7 @@ require_once("login/common.php");
                 $update_res = mysqli_query($conn, $update_sql);
                 if ($update_res == true) {
                     $STATUS = 0;
+                    header('Location: login/connexion.php');
                 } else {
                     $_SESSION["ERROR"] = "Les modifications ont échoué réessayer ultérieurement.";
                 }

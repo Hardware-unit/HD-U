@@ -22,7 +22,7 @@ require_once("info_panier.php");
     ?>
     <div class="contenu">
         <?php
-        if (isset($USER_INFO)) {
+        if (isset($USER_INFO->get)) {
             if (count($_GET) > 0) {
                 $quantite = $_GET["qte"];
                 $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO->getID() . ")";
