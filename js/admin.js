@@ -17,8 +17,47 @@ function finessAutofill(struc_item) {
     }
   );
 }
+        // rajoue de thomas //
+
+function httpRequest(
+    method = "GET",
+    is_async = true,
+    callback = function() {}
+) {
+    let req =
+        (window.XMLHttpRequest) ?
+        new XMLHttpRequest() :
+        new ActiveXObject("Microsoft.XMLHTTP");
+  req.onreadystatechange = callback;
+    req.open(method, url, is_async);
+    req.send();
+}
+
+        // fonction suppression d'utilisasteur //
+
+function deleteUser(user_id) {
+  httpRequest("delete-user.php?user-id=" + user_id, "POST", true, function() {
+    if (this.readyState === XMLHttpRequest.DONE) {
+      if (this.status === 200) {
+        
+      }
+    }
+  });
+}
+
+
 
 function delet(id){
 
     var maRequest = new Request('ID')
 }
+
+
+
+fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+}).catch(function() {
+  console.log("Booo");
+});

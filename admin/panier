@@ -1,0 +1,19 @@
+<?php
+function getPanierInfo(){
+    global $USER_INFO, $PANIER_INFO, $conn;
+    if(isset($_SESSION['user_id'])){
+        $sql = "SELECT *, pr.nom AS produit_nom ,pr.prix  FROM `panier` AS pn JOIN `produits` AS pr ON pn.ID_article = pr.ID WHERE `ID_user` = '". $USER_INFO->getID()."'"; // stock les info de l'utilisateur a partir de sont id
+        $result = $conn->query($sql);
+        $res = $result->fetch_array();
+
+        foreach($res as $panier)
+        {
+            $obj = new Panier($panier['ID'], $panier['ID_article'], $panier['Qte'], $panier['ID_user']);
+            array_push($PANIER_INFO, $obj);
+        }
+        
+    }else{
+        unset($PANIER_INFO);
+    }
+}
+?>
