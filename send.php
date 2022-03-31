@@ -44,8 +44,7 @@ require_once("info_panier.php");
             $desti = $uploads_dir . "/" . $newname;
 
             move_uploaded_file($tmp_name, $desti);
-
-
+            
             header("location:index.php");
         }
         ?>

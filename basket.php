@@ -25,11 +25,17 @@ require_once("info_panier.php");
         if (isset($USER_INFO)) {
             if (count($_GET) > 0) {
                 $quantite = $_GET["qte"];
+                
                 $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO->getID() . ")";
+                
                 $result = $conn->query($sql);
+                
                 header("Location: basket.php"); // si on ajoute on rechage si produit ajouté
                 exit();
             }
+            $quantitePage = $_POST["qtes"];
+            $sqlPage = "UPDATE `panier` SET `Qte`='$quantitePage' WHERE `ID_user`= '" . $USER_INFO->getID() . "' AND `ID`= '" . $PANIER_INFO['ID'] . "'";
+            $resultPage = $conn->query($sqlPage);
             $sql2 = "SELECT ROUND(pa.Qte * p.prix, 2) AS prix_produit, pa.Qte, p.* FROM `panier` AS pa JOIN `produits` AS p ON pa.ID_article = p.ID WHERE pa.ID_user = " . $USER_INFO->getID();
             $result2 = $conn->query($sql2);
             $c = mysqli_num_rows($result2); // compter le nombre d'articles
@@ -66,9 +72,9 @@ require_once("info_panier.php");
                                     <?= $row["prix"] ?> €
                                 </div>
                                 <div class="P_I">
-                                    <form action="basket.php" method="GET">
-                                        <label for="qte">Quantité :</label>
-                                        <select name="qte" onchange="this.parentNode.submit();" id="qte">
+                                    <form action="basket.php" method="POST">
+                                        <label for="qtes">Quantité :</label>
+                                        <select name="qtes" onchange="this.parentNode.submit();" id="qte">
                                             <?php $i = 0;
                                             while ($i < 10) {
                                                 $i++;

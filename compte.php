@@ -30,13 +30,13 @@ require_once("info_panier.php");
         $lejour = $_POST["date"];
         $lesexe = isset($_POST['genre']) ? $_POST['genre'] : NULL;
         $letel = $_POST["tel"];
-        $update_sql = "UPDATE `utilisateur` SET `Nom`= '$lenom' ,`Prenom`= '$leprenom' ,`Date_De_Naissance`= '$lejour' ,`tel`= '$letel' ,`sexe`= '$lesexe' WHERE `ID` = '". $USER_INFO->getID()."'";
+        $update_sql = "UPDATE `utilisateur` SET `Nom`= '$lenom' ,`Prenom`= '$leprenom' ,`Date_De_Naissance`= '$lejour' ,`tel`= '$letel' ,`sexe`= '$lesexe' WHERE `ID` = '" . $USER_INFO->getID() . "'";
         $update_res = $conn->query($update_sql);
         if ($update_res == true) {
             header('Location: compte.php');
         }
     }
-    
+
     ?>
     <div class="contenu">
         <div class="Profil">
@@ -61,7 +61,14 @@ require_once("info_panier.php");
                     <div class="modif-info">
                         <div class="">Email :<br>
                             <?= $USER_INFO->getEmail() ?></div>
-                        <div class="modif"><button>Modifier</button></div>
+                        <div class="modif">
+                            <a href="modifmail-verif.php?mail=<?= urlencode($USER_INFO->getEmail()) ?>">
+                                <!-- transforme les caractères spéciaux -->
+                                <button type="button">
+                                    Modifier
+                                </button>
+                            </a>
+                        </div>
                     </div>
                     <hr class="separator">
                     <div class="modif-info">

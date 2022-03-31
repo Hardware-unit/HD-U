@@ -14,7 +14,7 @@ class User{
 
     public function __construct($obj)
     {
-        $_params = array_keys(get_class_vars(get_class($this)));// re demander a lvll
+        $_params = array_keys(get_class_vars(get_class($this)));
         foreach ($obj as $k => $v)
             if (in_array($k, $_params))
                 $this->$k = $v;

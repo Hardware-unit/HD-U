@@ -1,0 +1,12 @@
+.block-card{
+  background-color: yellowgreen;
+  width: fit-content;
+  padding: 20px ;
+  margin: auto;
+}
+.modul-card{
+  margin: 0px 0px 10px 0px;
+}
+.coordonnees{
+  margin: 15px 0px 0px 0px;
+}

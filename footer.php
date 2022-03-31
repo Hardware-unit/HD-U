@@ -6,12 +6,12 @@
         <table width="100%">
             <tr>
                 <td>nous contacter</td>
-                <td>garantie</td>
-                <td>service apres vente</td>
+                <td>Conditions générales de vente</td>
+                <td>Mentions legales</td>
             </tr>
             <tr>
-                <td>© réseaux</td>
-                <td>groupe</td>
+                <td>©Nassim Barkallah - Victor Jouin - Paul Chevalier 2021</td>
+                
             </tr>
         </table>
     </footer>

@@ -23,8 +23,7 @@ require_once("login/common.php");
         if (count($_POST) > 0) {
             $pwd1 = $_POST['mdp1'];
             $pwd2 = $_POST['mdp2'];
-
-
+                
             if ($pwd1 == $pwd2) {
                 $lepass = password_hash($pwd1, PASSWORD_DEFAULT);
                 $sql = "SELECT * FROM verif WHERE Code = '$get_code' ";
@@ -32,7 +31,7 @@ require_once("login/common.php");
                 $row = $result->fetch_array();
                 $id = $row['Users'];
                 $update_sql = "UPDATE `utilisateur` SET `utilisateur`.`MotDePasse` = '$lepass' WHERE `utilisateur`.`ID` = '$id' ";
-                $update_res = mysqli_query($conn, $update_sql);
+                $update_res = $conn->query($update_sql);
                 if ($update_res == true) {
                     $STATUS = 0;
                     header('Location: login/connexion.php');
