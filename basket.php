@@ -25,6 +25,12 @@ require_once("info_panier.php");
         if (isset($USER_INFO)) {
             if (count($_GET) > 0) {
                 $quantite = $_GET["qte"];
+                
+                $sql = "INSERT INTO `panier`(`ID`, `ID_article`, `Qte`, `ID_user`) VALUES (NULL," . $_GET["produit"] . ",$quantite," . $USER_INFO->getID() . ")";
+                
+                $result = $conn->query($sql);
+                
+                header("Location: basket.php"); // si on ajoute on rechage si produit ajouté
                 $qtes = $_POST["qtes"];
                 $produitexiste = "SELECT count(*) from `panier` WHERE  `ID_user`= '" . $USER_INFO->getID() . "' AND `ID_article` = '" . $_GET["produit"] . "'";
                 
