@@ -11,5 +11,4 @@ function getUserInfo(){
         unset($USER_INFO);
     }
 }
-
 ?>
