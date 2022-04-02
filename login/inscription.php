@@ -1,6 +1,45 @@
 <?php
 require_once("../db.php");
 require_once("../reCaptcha/autoload.php");
+if (count($_POST) > 0) { //
+    $lenom = $_POST["nom"];
+    $leprenom = $_POST["prenom"];
+    $email = $_POST["email"];
+    $lepass = $_POST["pwd1"];
+    $lejour = $_POST["day"];
+    $lemois = $_POST["month"];
+    $leannee = $_POST["year"];
+    $lesexe = isset($_POST['hf']) ? $_POST['hf'] : NULL;
+    $letel = $_POST["tel"];
+    $lepass = password_hash($lepass, PASSWORD_DEFAULT);
+    $captcha = $_POST["g-recaptcha-response"];
+
+    $sql2 = "SELECT count(*) FROM utilisateur WHERE Email = '$email' or tel = '$letel' ";
+
+    $result = $conn->query($sql2);
+    $row = $result->fetch_array();
+
+    $secretKey = "6LftrzUeAAAAAKCXJNwFN-eQ85W-qK8wd9gJn1aA";
+    // post request to server
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+    $response = file_get_contents($url);
+    $responseKeys = json_decode($response, true);
+    // should return JSON with success as true
+    if ($responseKeys["success"]) {
+
+        if ($row[0] > 0) { // le premier element du tableau qui sont deja existant 
+            echo "<script>alert(\"information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?\")</script>";
+        } else {
+            $sql = "INSERT INTO utilisateur VALUES (NULL, '$lenom', '$leprenom', '$email', '$lepass', '$leannee-$lemois-$lejour',0,'$letel' ,'$lesexe',0)";
+            $conn->query($sql);
+            $_SESSION["email_verif"] = $email;
+            header("location:../inscription_verif.php");
+        }
+    } else {
+        $_SESSION["ERROR"] = "le captcha non valide";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,47 +55,6 @@ require_once("../reCaptcha/autoload.php");
 
 <body class="back" onload="init();">
     <div><? $err_meg ?></div>
-    <?php
-    if (count($_POST) > 0) { //
-        $lenom = $_POST["nom"];
-        $leprenom = $_POST["prenom"];
-        $email = $_POST["email"];
-        $lepass = $_POST["pwd1"];
-        $lejour = $_POST["day"];
-        $lemois = $_POST["month"];
-        $leannee = $_POST["year"];
-        $lesexe = isset($_POST['hf']) ? $_POST['hf'] : NULL;
-        $letel = $_POST["tel"];
-        $lepass = password_hash($lepass, PASSWORD_DEFAULT);
-        $captcha = $_POST["g-recaptcha-response"];
-
-        $sql2 = "SELECT count(*) FROM utilisateur WHERE Email = '$email' or tel = '$letel' ";
-
-        $result = $conn->query($sql2);
-        $row = $result->fetch_array();
-
-        $secretKey = "6LftrzUeAAAAAKCXJNwFN-eQ85W-qK8wd9gJn1aA";
-        // post request to server
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
-        $response = file_get_contents($url);
-        $responseKeys = json_decode($response, true);
-        // should return JSON with success as true
-        if ($responseKeys["success"]) {
-
-            if ($row[0] > 0) { // le premier element du tableau qui sont deja existant 
-                echo "<script>alert(\"information: Email ou téléphone déjà utilisé. Avez vous déjà un compte ?\")</script>";
-            } else {
-                $sql = "INSERT INTO utilisateur VALUES (NULL, '$lenom', '$leprenom', '$email', '$lepass', '$leannee-$lemois-$lejour',0,'$letel' ,'$lesexe',0)";
-                $conn->query($sql);
-                $_SESSION["email_verif"] = $email;
-                header("location:../inscription_verif.php");
-            }
-        }else{
-            $_SESSION["ERROR"]="le captcha non valide";
-        }
-    }
-    ?>
     <div class="register">
         <div>
             <h1>S'inscrire</h1><a href="connexion.php" class="cross1"><img src="../Image/checkmark.png" alt="cross" class="cross"></a>
@@ -141,7 +139,7 @@ require_once("../reCaptcha/autoload.php");
 
         </form>
     </div>
-    
+
     <script type="text/javascript" src="../js/inscription.js?v=<?= ver() ?>"></script>
 </body>
 
