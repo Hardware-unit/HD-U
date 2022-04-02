@@ -4,8 +4,7 @@
     getUserInfo();
 
     $sql = "DELETE FROM `panier` WHERE ID_article = " . $_GET["id"] . " AND ID_user = " . $USER_INFO->getID() ;
-    echo $sql;
 
-    $connm->query($sql);
+    $result = $conn->query($sql);
     header("location:basket.php");
 ?>
