@@ -22,7 +22,11 @@ require_once("info_panier.php");
     require_once("header.php");
     ?>
     <?php
-    $sql = "SELECT p.ID,p.*, p.nom as prodnom, p.prix as prodprix, m.nom as marquenom from produits as p join marques as m on p.marque = m.ID WHERE p.dispo = 1 ORDER BY RAND() LIMIT 3";
+    $sql = "SELECT p.ID,p.*, p.nom as prodnom, 
+    p.prix as prodprix, m.nom as marquenom 
+    from produits as p 
+    join marques as m on p.marque = m.ID 
+    WHERE p.dispo = 1 ORDER BY RAND() LIMIT 3";
     $result = $conn->query($sql);
     ?>
 
