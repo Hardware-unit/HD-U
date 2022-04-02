@@ -80,7 +80,7 @@ require_once("info_panier.php");
                             <div>
                                 <div class="img_product">
                                     <?php
-                                    $cheminimg = "Image/" . $row['ID'] . "_1";
+                                    $cheminimg = "Image/" . $row['ID'] . "_1.jpp";
                                     echo "<img src='$cheminimg' alt='' class='image'>";
                                     ?>
                                 </div>
