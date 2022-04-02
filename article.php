@@ -36,7 +36,7 @@ require_once("info_panier.php");
                         <div class="block_image">
                             <div class="Img_prod">
                                 <?php
-                                $cheminimg = "Image/" . $row['ID'] . "_1.jpg";
+                                $cheminimg = "Image/" . $row['ID'] . "_1";
                                 echo "<img src = '$cheminimg' alt='' class='image' >";
                                 ?>
                             </div>
@@ -146,7 +146,7 @@ require_once("info_panier.php");
                     <div class="block_image">
                         <div>
                             <?php
-                            $cheminimg = "Image/" . $row['ID'] . "_1.jpg";
+                            $cheminimg = "Image/" . $row['ID'] . "_1";
                             echo "<img src = '" . $cheminimg . "' alt='' class='image' >";
                             ?>
                         </div>

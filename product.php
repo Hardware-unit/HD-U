@@ -42,7 +42,7 @@ require_once("info_panier.php");
                                 <div class="block_image">
                                     <div>
                                         <?php
-                                        $cheminimg = "Image/" . $BLOC['ID'] . "_1.jpg";
+                                        $cheminimg = "Image/" . $BLOC['ID'] . "_1";
                                         echo "<img src = '" . $cheminimg . "' alt='' class='image' >";
                                         ?>
                                     </div>
@@ -53,7 +53,7 @@ require_once("info_panier.php");
                                 <div class="block_seller">
                                     <div>
                                         <?php
-                                        $cheminimg = "Image/" . $BLOC['ID'] . "_1.jpg";
+                                        $cheminimg = "Image/" . $BLOC['ID'] . "_1";
                                         echo "<img src = '" . $cheminimg . "' alt='' class='image' >";
                                         ?>
                                     </div>
