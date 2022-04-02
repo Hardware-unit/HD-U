@@ -65,7 +65,8 @@ if (isset($_GET["code"])) {// losque l'on viens de cette meme page
                         "code" => strtoupper($code),
                         "pageUrl" => "http://" . $_SERVER["HTTP_HOST"] . "/Hardware_Unit/inscription_verif.php" // addresse du seveur donc (localhost) . le chemin 
 
-                    ])
+                        ])
+                       
                 );
                 $STATUS = 0;
             } else {
