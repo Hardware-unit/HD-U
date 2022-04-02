@@ -63,7 +63,7 @@ if (isset($_GET["code"])) {// losque l'on viens de cette meme page
                         "firstName" => $row["Nom"],
                         "lastname" => $row["Prenom"],
                         "code" => strtoupper($code),
-                        "pageUrl" => "http://" . $_SERVER["HTTP_HOST"] . "/Hardware_Unit/inscription_verif.php" // addresse du seveur donc (localhost) . le chemin 
+                        "pageUrl" => "http://" . $_SERVER["HTTP_HOST"] . "/dev/Hardware_Unit/inscription_verif.php" // addresse du seveur donc (localhost) . le chemin 
 
                         ])
                        
