@@ -90,7 +90,7 @@ nav {
   );
   position: absolute;
   top: 23px;
-  right: 161px;
+  right: 225px;
   width: fit-content;
 }
 .a_magnifying {
@@ -116,7 +116,7 @@ nav > ul {
   display: flex;
   font-size: 30px;
   justify-content: flex-end;
-  margin-right: 20px;
+  margin-right: 80px;
 }
 nav > ul > li > a {
   color: white;
@@ -190,8 +190,10 @@ nav li {
   .menu_toggle {
     display: block;
     width: 35px;
-    margin-right: 20px;
+    position: relative;
+    left: 27px;
   }
+
   .menu_toggle:checked .Block_Menu {
     display: block;
     float: right;
@@ -200,13 +202,21 @@ nav li {
     display: none;
   }
   .Block_Menu.responsive {
-    border: 1px solid;
     display: block;
     position: absolute;
     top: 123px;
     float: left;
     width: 100%;
-    background-color: #2b2a2a;
+    background-color: #7d7a7a;
+    left: 0px;
+  }
+  nav .respon{
+    margin: 25px 20px;
+  }
+  .badge{
+        position: absolute;
+        left: 46px;
+        top: 128px;
   }
 }
 /* scroll top 

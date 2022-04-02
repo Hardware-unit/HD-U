@@ -22,7 +22,7 @@ $mail->Username = "hardwareunit.contact@gmail.com";
 $mail->Host = "smtp.gmail.com";
 $mail->setFrom("hardwareunit.contact@gmail.com", 'HardwareUnit');
 
-$mail->Password = "Hardwareunit1";
+$mail->Password = "lirjtmjelfvmvrqg";
 
 // fonction envoie de mail (merci Thomas L)
 function send_mail($to, $subject, $body, $is_html = true)

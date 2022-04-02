@@ -19,9 +19,9 @@
             </form>
             <span class="menu_toggle"><a href="javascript:void(0);" class="icon" onclick="myFunction()"> <img src="Image/menu.svg" alt="menu_phone"> </a></span>
             <div class="Block_Menu" id="myTopnav">
-                <li><a href="product.php?tri=RAND()" class="link menu">Nos Produits</a></li>
-                <li><a href="send.php" class="link menu">Vendre</a></li>
-                <li class="a_basket"><a href="basket.php" class="menu"><img alt=" basket" src="Image/basket.png" class="basket">
+                <li class="respon"><a href="product.php?tri=RAND()" class="link menu">Nos Produits</a></li>
+                <li class="respon"><a href="send.php" class="link menu">Vendre</a></li>
+                <li class="a_basket respon"><a href="basket.php" class="menu"><img alt=" basket" src="Image/basket.png" class="basket">
                         <?php
                         if (isset($USER_INFO)) {
                         ?>
@@ -35,7 +35,7 @@
                 <?php
                 if (isset($USER_INFO)) {
                 ?>
-                    <li class="name1"><?= $USER_INFO->getNom() ?>
+                    <li class="name1 respon"><?= $USER_INFO->getNom() ?>
                         <ul class="elements">
                             <li class="under1"><a href="compte.php">Mon compte</a></li>
                             <?php
