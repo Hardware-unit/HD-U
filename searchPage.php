@@ -19,7 +19,6 @@ require_once("info_panier.php");
     <link rel="stylesheet" type="text/css" href="CSS/product.css?v=<?= ver() ?>" />
     <link rel="stylesheet" type="text/css" href="CSS/HomePage.css?v=<?= ver() ?>" />
 </head>
-
 <body>
     <?php
     getUserInfo();
@@ -29,24 +28,25 @@ require_once("info_panier.php");
     <div class="contenu">
         <div class="block1">
             <?php
-            if (isset($_GET['searchBar']) && isset($_GET["modeTri"])) { //si on viens du form
-                $search = htmlspecialchars($_GET['searchBar']); //eviter les injection sql
-                $search_array = explode(" ", $search); // separre la recherche 
-                $sql = "SELECT p.ID, p.*,p.nom AS prodnom, p.prix AS prodprix, m.nom AS marquenom FROM `produits` AS p JOIN `marques` AS m ON p.marque = m.ID WHERE p.dispo = 1"; // %=mot avent et apres
+            if (isset($_GET['searchBar']) && isset($_GET["modeTri"])) { //si on vient du form
+                $search = htmlspecialchars($_GET['searchBar']); //éviter les injection sql
+                $search_array = explode(" ", $search); // sépare la recherche 
+                $sql = "SELECT p.ID, p.*,p.nom AS prodnom, p.prix AS prodprix, 
+                m.nom AS marquenom FROM `produits` AS p 
+                JOIN `marques` AS m ON p.marque = m.ID WHERE p.dispo = 1 "; // %=mot avent et apres
                 $sql .= " AND (";
                 $tableauVide = array();
                 foreach ($search_array as $mot) {
                     array_push($tableauVide, "p.nom LIKE '%$mot%'");
                 }
                 $sql .= join(" OR ", $tableauVide);
-                $sql .= ")";
+                $sql .=
+                ") ORDER BY " . $_GET["modeTri"];
 
                 $result = $conn->query($sql);
-                $c = mysqli_num_rows($result); // nombre d'info trouver
+                $c = mysqli_num_rows($result); // Nombre d'info trouver
                 while ($row = mysqli_fetch_array($result)) {
                     if ($row['confirmation'] == 1) {
-
-
             ?>
                         <a href="article.php?id=<?= $row['ID'] ?>">
                             <!--get id de la page article = a celui-ci-->

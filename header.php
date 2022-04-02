@@ -7,10 +7,10 @@
                     <li class="a_magnifying">
                         <div class="input_search">
                             <input type="search" class="search" name="searchBar" value="<?php if (isset($_GET['searchBar'])) { //le name et la value rentre dans l'url lors de l'envoi
-                                                                                            echo $_GET['searchBar'];/* permet de laisser la recherche afficher en  cas de tris la page se recharge avec le meme element rechercher */
+                                                                                            echo $_GET['searchBar'];/* Permet de laisser la recherche afficher en  cas de tris la page se recharge avec le même élément rechercher */
                                                                                         } ?>">
                         </div>
-                        <input type="hidden" name="modeTri" value="RAND()"> <!-- cacher le input avec hidden on met un input pour metre dans l'url -->
+                        <input type="hidden" name="modeTri" value="RAND()"> <!-- Cacher le input avec hidden on met un input pour mettre dans l'url -->
                         <div class="D_button_search">
                             <button type="submit"><img src="Image/magnifying_glass.png" alt="magnifying" class="magnifying"></button>
                         </div>

@@ -23,7 +23,9 @@ require_once("info_panier.php");
         ?>
         <?php
         if (isset($_GET["tri"])) {
-            $sql = "SELECT p.ID, p.* ,p.nom as prodnom, p.prix as prodprix, m.nom as marquenom from produits p join marques m on p.marque = m.ID WHERE p.dispo = 1 ORDER BY " . $_GET["tri"];
+            $sql = "SELECT p.ID, p.* ,p.nom as prodnom, p.prix as prodprix, 
+            m.nom as marquenom from produits p join marques m on p.marque = m.ID 
+            WHERE p.dispo = 1 ORDER BY " . $_GET["tri"];
             $result = $conn->query($sql);
         ?>
             <div class="block1">
