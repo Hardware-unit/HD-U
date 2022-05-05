@@ -46,8 +46,12 @@ require_once "info_panier.php";
                         <td><?=
                             $BLOC['Date_De_Naissance']
                             ?></td>
-                        <td><?=
-                            $BLOC['Droit']
+                        <td><?php
+                            if ($BLOC['Droit'] == 0) {
+                                echo 'Utilisateur';
+                            } else {
+                                echo "Admin";
+                            }
                             ?></td>
                         <td><?=
                             $BLOC['tel']
@@ -56,14 +60,14 @@ require_once "info_panier.php";
                             $BLOC['genre']
                             ?></td>
                     </tr>
-                    <?php if($BLOC['Droit']==0){
-                        ?>
-                    <td><button></button></td>
-                    </tr>
-                    <td><?=
-                        $BLOC['genre']
-                        ?></td>
-                        <?php } ?>
+                    <?php if ($BLOC['Droit'] == 0) {
+                    ?>
+                        <td><button></button></td>
+                        </tr>
+                        <td><?=
+                            $BLOC['genre']
+                            ?></td>
+                    <?php } ?>
                     </tr>
                 </table>
                 <div></div>
