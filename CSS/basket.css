@@ -35,3 +35,11 @@
     margin-top: 30px;
     font-size: 19px;
 }
+.btn-sup{
+  background-color: red;
+  border: 0px;
+  padding: 5px 3px;
+}
+.users-list{
+    margin-bottom: 5px;
+}

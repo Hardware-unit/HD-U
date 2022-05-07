@@ -9,7 +9,7 @@ require_once "info_panier.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>Panier</title>
+    <title>Nos Utilisateurs</title>
     <link rel="stylesheet" type="text/css" href="CSS/basket.css?v=<?= ver() ?>" />
     <link rel="icon" type="image/png" href="Image/HeadLogo.png" />
     <link rel="stylesheet" type="text/css" href="CSS/HomePage.css?v=<?= ver() ?>" />
@@ -19,67 +19,62 @@ require_once "info_panier.php";
     <?php
     getUserInfo();
     getPanierInfo();
-    if ($USER_INFO->getID() >= 1) {
+    $users = json_decode(file_get_contents("http://localhost/dev/Hardware_Unit/API_HU/users"));
+    if ($USER_INFO->getDroit() == 1) {
         require_once("header.php");
-        $sql = "SELECT * ,s.nom AS genre FROM `utilisateur` AS u JOIN sexe AS s on u.sexe = s.ID_sex where `confirme` = 1";
-        $result = $conn->query($sql);
+
     ?>
         <div class="contenu">
-            <?php
-            $c = mysqli_num_rows($result);
-            while ($BLOC = $result->fetch_array()) {
-            ?>
-                <table>
-                    <tr>
-                        <td><?=
-                            $BLOC['ID']
-                            ?></td>
-                        <td><?=
-                            $BLOC['Nom']
-                            ?></td>
-                        <td><?=
-                            $BLOC['Prenom']
-                            ?></td>
-                        <td><?=
-                            $BLOC['Email']
-                            ?></td>
-                        <td><?=
-                            $BLOC['Date_De_Naissance']
-                            ?></td>
-                        <td><?php
-                            if ($BLOC['Droit'] == 0) {
-                                echo 'Utilisateur';
-                            } else {
-                                echo "Admin";
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>Nom</td>
+                    <td>Prenom</td>
+                    <td>Email</td>
+                    <td>Droit</td>
+                    <td>Modifier</td>
+                </tr>
+                <?php foreach ($users as $user) :
+                ?>
+
+                    <tr class="users-list">
+                        <div>
+                            <td><?= $user->ID ?></td>
+                            <td><?= $user->Nom ?></td>
+                            <td><?= $user->Prenom ?></td>
+                            <td><?= $user->Email ?></td>
+                            <td>
+                                <?php if ($user->Droit == 1) {
+                                    echo 'Administrateur';
+                                } else {
+                                    echo 'Utilisateur';
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <a href="viewUsers.php?id=<?= $user->ID ?>">
+                                    <button>voir</button>
+                                </a>
+                            </td>
+
+                            <?php if ($user->Droit == 0) {
+                            ?>
+                                <td>
+                                    <a href="supUser.php?id=<?= $user->ID ?>">
+                                        <button class="btn-sup">
+                                            Suprimier utilisateur
+                                        </button>
+                                    </a>
+                                </td>
+                            <?php
                             }
-                            ?></td>
-                        <td><?=
-                            $BLOC['tel']
-                            ?></td>
-                        <td><?=
-                            $BLOC['genre']
-                            ?></td>
+                            ?>
+
+                        </div>
                     </tr>
-                    <?php if ($BLOC['Droit'] == 0) {
-                    ?>
-                        <td><button></button></td>
-                        </tr>
-                        <td><?=
-                            $BLOC['genre']
-                            ?></td>
-                    <?php } ?>
-                    </tr>
-                </table>
-                <div></div>
 
-
-            <?php
-            }
-
-            ?>
-            <?=
-            $c
-            ?>
+                <?php endforeach; ?>
+            </table>
         </div>
     <?php
         require_once("footer.php");
